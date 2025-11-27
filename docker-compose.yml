@@ -1,0 +1,104 @@
+# Docker Compose version 3.8+ is now implied
+
+services:
+  # PostgreSQL with PostGIS for spatial data
+  postgres:
+    image: postgis/postgis:16-3.4
+    container_name: sumbawa-gis-postgres
+    environment:
+      POSTGRES_DB: sumbawa_gis
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_HOST_AUTH_METHOD: trust
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./backend/app/database/init_db.sql:/docker-entrypoint-initdb.d/init_db.sql
+    networks:
+      - gis-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d sumbawa_gis"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # FastAPI Backend
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: sumbawa-gis-backend
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql://postgres:password@postgres:5432/sumbawa_gis
+      ENVIRONMENT: development
+      CORS_ORIGINS: '["http://localhost:5173","http://localhost:3000"]'
+    volumes:
+      - ./backend:/app
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - gis-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Vue 3 Frontend
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: sumbawa-gis-frontend
+    command: npm run dev -- --host 0.0.0.0 --port 5173
+    ports:
+      - "5173:5173"
+    environment:
+      VITE_API_BASE_URL: http://localhost:8000
+      VITE_WS_URL: ws://localhost:8000/ws
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+    networks:
+      - gis-network
+    restart: unless-stopped
+
+  # Optional: pgAdmin for database management
+  # pgadmin:
+  #   image: dpage/pgadmin4:latest
+  #   container_name: sumbawa-gis-pgadmin
+  #   environment:
+  #     PGADMIN_DEFAULT_EMAIL: admin@sumbawa-gis.com
+  #     PGADMIN_DEFAULT_PASSWORD: admin123
+  #     PGADMIN_CONFIG_SERVER_MODE: 'False'
+  #   ports:
+  #     - "5050:80"
+  #   volumes:
+  #     - pgadmin_data:/var/lib/pgadmin
+  #   depends_on:
+  #     - postgres
+  #   networks:
+  #     - gis-network
+  #   profiles:
+  #     - admin
+
+volumes:
+  postgres_data:
+    driver: local
+  # pgadmin_data:
+  #   driver: local
+
+networks:
+  gis-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16

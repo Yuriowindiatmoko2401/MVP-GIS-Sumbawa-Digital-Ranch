@@ -1,0 +1,199 @@
+// Sumbawa Digital Ranch - SCSS Variables
+
+// Colors
+$primary-color: #2E7D32;      // Green for ranch theme
+$primary-hover: #1B5E20;      // Darker green
+$primary-light: #4CAF50;       // Lighter green
+
+$secondary-color: #1976D2;    // Blue
+$secondary-hover: #1565C0;
+$secondary-light: #42A5F5;
+
+$success-color: #4CAF50;        // Green
+$success-hover: #388E3C;
+$success-light: #81C784;
+
+$warning-color: #FF9800;        // Orange
+$warning-hover: #F57C00;
+$warning-light: #FFB74D;
+
+$danger-color: #F44336;         // Red
+$danger-hover: #D32F2F;
+$danger-light: #E57373;
+
+$info-color: #2196F3;          // Blue
+$info-hover: #1976D2;
+$info-light: #64B5F6;
+
+// Grayscale
+$white: #FFFFFF;
+$black: #000000;
+$gray-100: #F5F5F5;
+$gray-200: #EEEEEE;
+$gray-300: #E0E0E0;
+$gray-400: #BDBDBD;
+$gray-500: #9E9E9E;
+$gray-600: #757575;
+$gray-700: #616161;
+$gray-800: #424242;
+$gray-900: #212121;
+
+// Semantic colors
+$text-color: $gray-800;
+$text-muted: $gray-600;
+$text-light: $gray-500;
+$text-inverse: $white;
+
+$background-color: $gray-100;
+$background-dark: $gray-900;
+$background-light: $white;
+
+$border-color: $gray-300;
+$border-light: $gray-200;
+$border-dark: $gray-400;
+
+// Resource type colors
+$water-color: #2196F3;          // Blue
+$water-light: #64B5F6;
+$water-dark: #1976D2;
+
+$feed-color: #FF9800;           // Orange
+$feed-light: #FFB74D;
+$feed-dark: #F57C00;
+
+$shelter-color: #607D8B;         // Gray
+$shelter-light: #90A4AE;
+$shelter-dark: #455A64;
+
+// Cattle status colors
+$healthy-color: #4CAF50;         // Green
+$attention-color: #FF9800;       // Orange
+$sick-color: #F44336;            // Red
+
+$within-geofence-color: #4CAF50;  // Green
+$outside-geofence-color: #F44336; // Red
+
+// Typography
+$font-family-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+$font-family-mono: 'Courier New', Courier, monospace;
+
+$font-size-xs: 0.75rem;      // 12px
+$font-size-sm: 0.875rem;     // 14px
+$font-size-base: 1rem;         // 16px
+$font-size-lg: 1.125rem;      // 18px
+$font-size-xl: 1.25rem;        // 20px
+$font-size-2xl: 1.5rem;       // 24px
+$font-size-3xl: 2rem;          // 32px
+$font-size-4xl: 2.5rem;        // 40px
+
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+$line-height-tight: 1.25;
+$line-height-base: 1.5;
+$line-height-relaxed: 1.625;
+
+// Spacing
+$spacing-xxs: 0.25rem;   // 4px
+$spacing-xs: 0.5rem;      // 8px
+$spacing-sm: 0.75rem;      // 12px
+$spacing-md: 1rem;         // 16px
+$spacing-lg: 1.5rem;       // 24px
+$spacing-xl: 2rem;         // 32px
+$spacing-2xl: 3rem;        // 48px
+$spacing-3xl: 4rem;        // 64px
+
+$spacing: (
+  'xxs': $spacing-xxs,
+  'xs': $spacing-xs,
+  'sm': $spacing-sm,
+  'md': $spacing-md,
+  'lg': $spacing-lg,
+  'xl': $spacing-xl,
+  '2xl': $spacing-2xl,
+  '3xl': $spacing-3xl
+);
+
+// Border radius
+$border-radius-sm: 0.25rem;  // 4px
+$border-radius: 0.5rem;      // 8px
+$border-radius-lg: 0.75rem;   // 12px
+$border-radius-xl: 1rem;      // 16px
+$border-radius-full: 9999px;
+
+// Shadows
+$shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+$shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+$shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+$shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+// Transitions
+$transition-fast: 0.15s ease;
+$transition-base: 0.3s ease;
+$transition-slow: 0.5s ease;
+
+// Z-index
+$z-index-dropdown: 1000;
+$z-index-sticky: 1020;
+$z-index-fixed: 1030;
+$z-index-modal-backdrop: 1040;
+$z-index-modal: 1050;
+$z-index-popover: 1060;
+$z-index-tooltip: 1070;
+$z-index-toast: 2000;
+
+// Layout
+$header-height: 60px;
+$sidebar-width: 300px;
+$sidebar-collapsed-width: 60px;
+
+$container-max-width: 1200px;
+$container-padding: $spacing-md;
+
+// Breakpoints
+$breakpoint-sm: 480px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1200px;
+$breakpoint-2xl: 1400px;
+
+// Map specific
+$map-controls-bg: rgba(255, 255, 255, 0.9);
+$map-controls-border: $gray-200;
+$map-controls-shadow: $shadow-sm;
+
+$marker-size: 25px;
+$marker-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+// Heatmap colors
+$heatmap-intensity-low: #FFFFB2;
+$heatmap-intensity-medium: #FED976;
+$heatmap-intensity-high: #FD8D3C;
+$heatmap-intensity-max: #800026;
+
+// Animation
+$animation-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+$animation-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+// Layer control
+$layer-toggle-size: 20px;
+$layer-toggle-bg: white;
+$layer-toggle-border: $border-color;
+
+// Notification panel
+$notification-panel-width: 350px;
+$notification-max-height: 400px;
+$notification-item-height: 80px;
+
+// Connection status
+$connection-connected: $success-color;
+$connection-disconnected: $danger-color;
+$connection-connecting: $warning-color;
+
+// Form validation
+$form-error-color: $danger-color;
+$form-success-color: $success-color;
+$form-warning-color: $warning-color;
