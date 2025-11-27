@@ -209,7 +209,7 @@ a {
 .card {
   background: white;
   border-radius: $border-radius;
-  box-shadow: $box-shadow;
+  box-shadow: $shadow;
   padding: $spacing-md;
   margin-bottom: $spacing-md;
 
@@ -325,9 +325,9 @@ a {
 .rounded-sm { border-radius: $border-radius-sm; }
 
 // Shadow utilities
-.shadow { box-shadow: $box-shadow; }
-.shadow-lg { box-shadow: $box-shadow-lg; }
-.shadow-sm { box-shadow: $box-shadow-sm; }
+.shadow { box-shadow: $shadow; }
+.shadow-lg { box-shadow: $shadow-lg; }
+.shadow-sm { box-shadow: $shadow-sm; }
 
 // Position utilities
 .relative { position: relative; }
